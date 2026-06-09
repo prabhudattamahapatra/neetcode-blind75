@@ -1,11 +1,19 @@
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        res=0
+    def minWindow(self, s: str, t: str) -> str:
+        result=""
+        
+            
+            
         for i in range(len(s)):
-            count=set()
+            temp=""
             for j in range(i,len(s)):
-                if s[j] in count:
-                    break
-                count.add(s[j])
-            res=max(res,len(count))
-        return res
+                temp+=s[j]
+                valid=True
+                for ch in set(t):
+                    if temp.count(ch) < t.count(ch):
+                        valid=False
+                        break
+                if valid:
+                    if result=="" or len(temp)<len(result):
+                        result=temp
+        return result
